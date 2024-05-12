@@ -13,15 +13,16 @@ public class Departamento implements Invitable{
     public void AgregarEmpleados(Empleado empleado){
         CantEmpleados.add(empleado);
     }
-    public int ObtenerCantidadEmpleados(){
+    public int ListaEmpleados(){
         return CantEmpleados.size();
     }
-    public void ListaEmpleados(){
+    /**public void ListaEmpleados(){
         for(Empleado empleado: CantEmpleados){
             System.out.println("NOMBRE:"+empleado.getNombre()+" "+empleado.getApellido()+" "
                     +"Correo:"+empleado.getCorreo()+ " "+"ID:"+empleado.getID());
         }
     }
+     */
     public String NombreDelDepaEs(){
         return Nombre;
     }
