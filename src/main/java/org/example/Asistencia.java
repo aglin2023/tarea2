@@ -5,10 +5,10 @@ import java.util.ArrayList;
 
 public class Asistencia {
     protected ArrayList<Empleado> listaInvitados;
-    protected Instant horaDeLlegada;
     protected ArrayList<Instant> listaHoraDeLlegada;
-    protected Instant horaPrevista;
-    private ArrayList<Empleado> listaDeAsistencias;
+    protected Instant horaDeLlegada;
+    private Instant horaPrevista;
+    protected ArrayList<Empleado> listaDeAsistencias;
     private ArrayList<Empleado> listaDeAusencias;
 
 
@@ -17,18 +17,11 @@ public class Asistencia {
         this.horaPrevista = horaPrevista;
         this.listaDeAsistencias = new ArrayList<Empleado>();
         this.listaDeAusencias = new ArrayList<Empleado>();
-        //Puedo Reemplazar este for con el setter al hacer test!
-        for(Empleado empleado : listaInvitados) {
-            listaHoraDeLlegada.add(horaPrevista);
-        }
-        for(int i = 0; i < listaInvitados.size(); i++) {
-            listaHoraDeLlegada.add(null);
-        }
     }
 
     public ArrayList<Empleado> getObtenerAsistencia(){
         for(int numeroInvitado = 0; numeroInvitado < listaInvitados.size(); numeroInvitado++) {
-            if(listaHoraDeLlegada.get(numeroInvitado).isBefore(horaPrevista)) {
+            if(listaHoraDeLlegada.get(numeroInvitado).isBefore(horaPrevista) || listaHoraDeLlegada.get(numeroInvitado).equals(horaPrevista)){
                 listaDeAsistencias.add(listaInvitados.get(numeroInvitado));
             }
         }
@@ -51,5 +44,17 @@ public class Asistencia {
     public void setHoraDeLlegada(Instant horaDeLlegada, int numeroInvitado) {
         this.horaDeLlegada = horaDeLlegada;
         listaHoraDeLlegada.set(numeroInvitado, horaDeLlegada);
+    }
+
+    public ArrayList<Empleado> getListaDeAsistencias() {
+        return listaDeAsistencias;
+    }
+
+    public ArrayList<Empleado> getListaDeAusencias() {
+        return listaDeAusencias;
+    }
+
+    public Instant getHoraDeLlegada() {
+        return horaDeLlegada;
     }
 }
