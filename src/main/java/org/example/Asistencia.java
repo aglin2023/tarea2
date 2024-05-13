@@ -4,11 +4,11 @@ import java.time.Instant;
 import java.util.ArrayList;
 
 public class Asistencia {
-    protected ArrayList<Empleado> listaInvitados;
-    protected ArrayList<Instant> listaHoraDeLlegada;
-    protected Instant horaDeLlegada;
+    private ArrayList<Empleado> listaInvitados;
+    private ArrayList<Instant> listaHoraDeLlegada;
+    private Instant horaDeLlegada;
     private Instant horaPrevista;
-    protected ArrayList<Empleado> listaDeAsistencias;
+    private ArrayList<Empleado> listaDeAsistencias;
     private ArrayList<Empleado> listaDeAusencias;
 
 
@@ -17,6 +17,7 @@ public class Asistencia {
         this.horaPrevista = horaPrevista;
         this.listaDeAsistencias = new ArrayList<Empleado>();
         this.listaDeAusencias = new ArrayList<Empleado>();
+        this.listaHoraDeLlegada = new ArrayList<>();
     }
 
     public ArrayList<Empleado> getObtenerAsistencia(){
@@ -54,7 +55,19 @@ public class Asistencia {
         return listaDeAusencias;
     }
 
+    public ArrayList<Empleado> getListaInvitados(){
+        return listaInvitados;
+    }
+
+    public ArrayList<Instant> getListaHoraDeLlegada() {
+        return listaHoraDeLlegada;
+    }
+
     public Instant getHoraDeLlegada() {
         return horaDeLlegada;
+    }
+
+    public Instant getHoraPrevista() {
+        return horaPrevista;
     }
 }
