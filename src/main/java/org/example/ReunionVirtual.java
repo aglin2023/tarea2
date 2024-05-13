@@ -12,4 +12,7 @@ public class ReunionVirtual extends Reunion {
         this.enlace = enlace;
     }
 
+    public String getEnlace() {
+        return enlace;
+    }
 }
