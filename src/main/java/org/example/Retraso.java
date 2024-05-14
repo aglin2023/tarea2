@@ -5,18 +5,18 @@ import java.util.ArrayList;
 
 public class Retraso extends Asistencia {
 
-    private final ArrayList<Empleado> listaDeRetrasos;
+    private final ArrayList<Invitable> listaDeRetrasos;
 
-    public Retraso(ArrayList<Empleado> listaInvitados, Instant horaPrevista){
+    public Retraso(ArrayList<Invitable> listaInvitados, Instant horaPrevista){
         super(listaInvitados, horaPrevista);
-        listaDeRetrasos = new ArrayList<Empleado>();
+        listaDeRetrasos = new ArrayList<Invitable>();
     }
 
     /**
      *  Método para ver que empleado ha llegado tarde
      * @return Lista de empleados que se retrasaron en la reunión
      */
-    public ArrayList<Empleado> getObtenerRetrasos() {
+    public ArrayList<Invitable> getObtenerRetrasos() {
         for (int i = 0; i < super.getListaInvitados().size(); i++) {
             if (super.getListaHoraDeLlegada().get(i).isAfter(super.getHoraPrevista())) {
                 super.getListaDeAsistencias().add(super.getListaInvitados().get(i));
@@ -26,7 +26,7 @@ public class Retraso extends Asistencia {
         return listaDeRetrasos;
     }
 
-    public ArrayList<Empleado> getListaDeRetrasos() {
+    public ArrayList<Invitable> getListaDeRetrasos() {
         return listaDeRetrasos;
     }
 }
