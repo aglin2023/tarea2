@@ -11,21 +11,22 @@ public abstract class Reunion {
     private Instant horaPrevista;
     private Instant horaInicio;
     private Instant horaFin;
-    private ArrayList<Empleado> listaInvitable;
-    private ArrayList<Empleado> listaInvitados;
     private Asistencia asistencia;
-    private Empleado organizador;
     private Retraso retraso;
+    private Invitacion invitacion;
+//    private Empleado organizador;
 
 
     public Reunion(Date fecha, Duration duracionPrevista, Instant horaPrevista) {
         this.fecha = fecha;
         this.duracionPrevista = duracionPrevista;
         this.horaPrevista = horaPrevista;
-        this.listaInvitable = new ArrayList<Empleado>();
-        this.listaInvitados = new ArrayList<Empleado>();
-        this.organizador = new Empleado();
-
+        this.invitacion = new Invitacion();
+        this.asistencia = new Asistencia(invitacion.getListaInvitados(), horaPrevista);
+        this.retraso = new Retraso(invitacion.getListaInvitados(), horaPrevista);
+//        this.listaInvitable = new ArrayList<Empleado>();
+//        this.listaInvitados = new ArrayList<Empleado>();
+//        this.organizador = new Empleado();
     }
 
     public ArrayList obtenerAsistencias() {
@@ -45,7 +46,7 @@ public abstract class Reunion {
     }
 
     public float obtenerPorcentajeAsistencia() {
-        return (float) obtenerTotalAsistencias() * 100 / (float) listaInvitable.size();
+        return (float) obtenerTotalAsistencias() * 100 / (float) invitacion.getListaInvitados().size();
     }
 
     public float calcularTiempoReal(Instant horaInicio, Instant horaFin) {
@@ -61,37 +62,25 @@ public abstract class Reunion {
         this.horaFin = Instant.now();
     }
 
-    public ArrayList<Empleado> listaInvitable(ArrayList<Departamento> departamentos) {
-        for (Departamento departamento : departamentos) {
-            ArrayList<Empleado> listaEmpleados = departamento.ListaEmpleados();
-            for (Empleado empleado : listaEmpleados) {
-                listaInvitable.add(empleado);
-            }
-        }
-        return listaInvitable;
-    }
+//    public ArrayList<Empleado> listaInvitable(ArrayList<Departamento> departamentos) {
+//        for (Departamento departamento : departamentos) {
+//            ArrayList<Empleado> listaEmpleados = departamento.getListaEmpleados();
+//            for (Empleado empleado : listaEmpleados) {
+//                listaInvitable.add(empleado);
+//            }
+//        }
+//        return listaInvitable;
+//    }
 
-    public ArrayList<Empleado> getListaInvitable() {
-        return listaInvitable;
-    }
+//    public ArrayList<Empleado> getListaInvitados() {
+//        return listaInvitados;
+//    }
 
-    public void setlistaInvitados(ArrayList<Empleado> listaInvitable) {
-        listaInvitados.add(organizador.invitar(ListaInvitable));
-    }
-
-    public ArrayList<Empleado> getListaInvitados() {
-        return listaInvitados;
-    }
-
-    public void setAsistencia() {
-        this.asistencia = new Asistencia(listaInvitados, horaPrevista);
-    }
-
-    public void setRetraso() {
-        this.retraso = new Retraso(listaInvitados, horaPrevista);
-    }
-
-    public ArrayList<Empleado> getListaInvitados() {
-        return listaInvitados;
-    }
+//    public void setAsistencia() {
+//        this.asistencia = new Asistencia(invitacion.getListaInvitados(), horaPrevista);
+//    }
+//
+//    public void setRetraso() {
+//        this.retraso = new Retraso(invitacion.getListaInvitados(), horaPrevista);
+//    }
 }
