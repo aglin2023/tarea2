@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.ArrayList;
+
 public class Empleado implements Invitable {
     private String ID;
     private String Apellido;
@@ -25,11 +27,11 @@ public class Empleado implements Invitable {
     public String getID(){
         return ID;
     }
-
     @Override
-    public void Invitar(){
-
+    public void Invitar(ArrayList<Empleado> listaInvitable, ArrayList<Empleado> listaInvitados) {
+        if(listaInvitados.contains(this)){
+            return;
+        }
+        listaInvitados.add(this);
     }
 }
-
-
