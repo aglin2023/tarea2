@@ -7,8 +7,8 @@ public class Retraso extends Asistencia {
 
     private final ArrayList<Empleado> listaDeRetrasos;
 
-    public Retraso(ArrayList<Empleado> listaEmpleados, Instant horaPrevista){
-        super(listaEmpleados, horaPrevista);
+    public Retraso(ArrayList<Empleado> listaInvitados, Instant horaPrevista){
+        super(listaInvitados, horaPrevista);
         listaDeRetrasos = new ArrayList<Empleado>();
     }
 
