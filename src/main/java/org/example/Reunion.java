@@ -13,10 +13,9 @@ public abstract class Reunion {
     private Instant horaFin;
     private Asistencia asistencia;
     private Retraso retraso;
-    private Invitacion invitacion;
+    protected Invitacion invitacion;
     private TipoReunion tipoReunion; 
-    private ArrayList<Nota> notas; 
-//    private Empleado organizador;
+    private ArrayList<Nota> notas;
 
 
     public Reunion(Date fecha, Duration duracionPrevista, Instant horaPrevista, TipoReunion t) {
@@ -26,10 +25,8 @@ public abstract class Reunion {
         this.invitacion = new Invitacion();
         this.asistencia = new Asistencia(invitacion.getListaInvitados(), horaPrevista);
         this.retraso = new Retraso(invitacion.getListaInvitados(), horaPrevista);
-	this.tipoReunion = t;
-//        this.listaInvitable = new ArrayList<Empleado>();
-//        this.listaInvitados = new ArrayList<Empleado>();
-//        this.organizador = new Empleado();
+	    this.tipoReunion = t;
+        this.notas = new ArrayList<>();
     }
 
     public ArrayList obtenerAsistencias() {
@@ -65,25 +62,25 @@ public abstract class Reunion {
         this.horaFin = Instant.now();
     }
 
-//    public ArrayList<Empleado> listaInvitable(ArrayList<Departamento> departamentos) {
-//        for (Departamento departamento : departamentos) {
-//            ArrayList<Empleado> listaEmpleados = departamento.getListaEmpleados();
-//            for (Empleado empleado : listaEmpleados) {
-//                listaInvitable.add(empleado);
-//            }
-//        }
-//        return listaInvitable;
-//    }
+    public Asistencia getAsistencia() {
+        return asistencia;
+    }
 
-//    public ArrayList<Empleado> getListaInvitados() {
-//        return listaInvitados;
-//    }
+    public void agregarNotas(String apunte){
+        Nota nota = new Nota(apunte);
+        notas.add(nota);
+    }
+    public ArrayList<Nota> getNotas(){
+        return notas;
+    }
 
-//    public void setAsistencia() {
-//        this.asistencia = new Asistencia(invitacion.getListaInvitados(), horaPrevista);
-//    }
-//
-//    public void setRetraso() {
-//        this.retraso = new Retraso(invitacion.getListaInvitados(), horaPrevista);
-//    }
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("Fecha de la reunión: ").append(fecha.toString()).append(" Hora de la reunión:").append(horaPrevista.toString()).append("\n");
+        sb.append("Hora de inicio: ").append(horaInicio.toString()).append("\n");
+        sb.append("Hora de fin: ").append(horaFin.toString()).append("\n");
+        sb.append("Duración de la reunión: ").append(calcularTiempoReal(horaInicio, horaFin)).append("\n");
+        return sb.toString();
+    }
+
 }
