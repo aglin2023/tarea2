@@ -24,10 +24,10 @@ public class Empleado implements Invitable {
     }
     public String toString() {
         return "Empleado{" +
-                "ID='" + ID + "\'" +
-                ", Apellido='" + Apellido + "\'" +
-                ", Nombre='" + Nombre + "\'" +
-                ", Correo='" + Correo + "\'" +
+                "ID='" + ID  +
+                ", Apellido='" + Apellido +
+                ", Nombre='" + Nombre +
+                ", Correo='" + Correo  +
                 "}\n" ;
     }
 }
