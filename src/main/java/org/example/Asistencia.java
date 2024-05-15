@@ -4,23 +4,23 @@ import java.time.Instant;
 import java.util.ArrayList;
 
 public class Asistencia {
-    private ArrayList<Invitable> listaInvitados;
+    private ArrayList<Empleado> listaInvitados;
     private ArrayList<Instant> listaHoraDeLlegada;
     private Instant horaDeLlegada;
     private Instant horaPrevista;
-    private ArrayList<Invitable> listaDeAsistencias;
-    private ArrayList<Invitable> listaDeAusencias;
+    private ArrayList<Empleado> listaDeAsistencias;
+    private ArrayList<Empleado> listaDeAusencias;
 
 
-    public Asistencia(ArrayList<Invitable> listaInvitados, Instant horaPrevista){
+    public Asistencia(ArrayList<Empleado> listaInvitados, Instant horaPrevista){
         this.listaInvitados = listaInvitados;
         this.horaPrevista = horaPrevista;
-        this.listaDeAsistencias = new ArrayList<Invitable>();
-        this.listaDeAusencias = new ArrayList<Invitable>();
+        this.listaDeAsistencias = new ArrayList<>();
+        this.listaDeAusencias = new ArrayList<>();
         this.listaHoraDeLlegada = new ArrayList<>();
     }
 
-    public ArrayList<Invitable> getObtenerAsistencia(){
+    public ArrayList<Empleado> getObtenerAsistencia(){
         for(int numeroInvitado = 0; numeroInvitado < listaInvitados.size(); numeroInvitado++) {
             if(listaHoraDeLlegada.get(numeroInvitado).isBefore(horaPrevista) || listaHoraDeLlegada.get(numeroInvitado).equals(horaPrevista)){
                 listaDeAsistencias.add(listaInvitados.get(numeroInvitado));
@@ -28,7 +28,7 @@ public class Asistencia {
         }
         return listaDeAsistencias;
     }
-    public ArrayList<Invitable> getObtenerAusencias(){
+    public ArrayList<Empleado> getObtenerAusencias(){
         for(int numeroInvitado = 0; numeroInvitado < listaInvitados.size(); numeroInvitado++){
             if(listaHoraDeLlegada.get(numeroInvitado) == null) {
                 listaDeAusencias.add(listaInvitados.get(numeroInvitado));
@@ -53,11 +53,11 @@ public class Asistencia {
         }
     }
 
-    public ArrayList<Invitable> getListaDeAsistencias() {
+    public ArrayList<Empleado> getListaDeAsistencias() {
         return listaDeAsistencias;
     }
 
-    public ArrayList<Invitable> getListaDeAusencias() {
+    public ArrayList<Empleado> getListaDeAusencias() {
         return listaDeAusencias;
     }
 
@@ -65,11 +65,35 @@ public class Asistencia {
         return listaHoraDeLlegada;
     }
 
-    public ArrayList<Invitable> getListaInvitados() {
+    public ArrayList<Empleado> getListaInvitados() {
         return listaInvitados;
     }
 
     public Instant getHoraPrevista() {
         return horaPrevista;
+    }
+
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("Asistencia; \n");
+        if(listaDeAsistencias != null) {
+            int horaDeLlegadaEmpleado = 0;
+            for(Empleado empleado : listaDeAsistencias) {
+                sb.append(empleado.toString());
+                sb.append(", ");
+                sb.append(listaHoraDeLlegada.get(horaDeLlegadaEmpleado).toString());
+                horaDeLlegadaEmpleado++;
+            }
+        } else {
+            sb.append("No hubo asistencias\n");
+        }
+        if(listaDeAusencias != null) {
+            for(Empleado empleado : listaDeAusencias){
+                sb.append("Ausente: \n").append(empleado.toString());
+            }
+        } else {
+            sb.append("Todos Asistieron\n");
+        }
+        return sb.toString();
     }
 }
