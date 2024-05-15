@@ -8,11 +8,11 @@ public class Nota {
     private Instant ultimoCambio;
 
     public Nota(String s){
-	contenido = s;
-	ultimoCambio = Instant.now();
+	    contenido = s;
+	    ultimoCambio = Instant.now();
     }
 
-    public String LeerNota(){
+    public String toString(){
 	return contenido + " -- " + ultimoCambio;
     }
 
