@@ -15,23 +15,19 @@ public class Empleado implements Invitable {
         this.ID=id;
     }
 
-    public String getNombre(){
-        return Nombre;
-    }
-    public String getApellido(){
-        return Apellido;
-    }
-    public String getCorreo(){
-        return Correo;
-    }
-    public String getID(){
-        return ID;
-    }
     @Override
-    public void Invitar(ArrayList<Empleado> listaInvitable, ArrayList<Empleado> listaInvitados) {
+    public void Invitar(ArrayList<Empleado> listaInvitados) {
         if(listaInvitados.contains(this)){
             return;
         }
         listaInvitados.add(this);
+    }
+    public String toString() {
+        return "Empleado{" +
+                "ID='" + ID + "\'" +
+                ", Apellido='" + Apellido + "\'" +
+                ", Nombre='" + Nombre + "\'" +
+                ", Correo='" + Correo + "\'" +
+                "}\n" ;
     }
 }
