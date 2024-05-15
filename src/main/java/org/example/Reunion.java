@@ -14,16 +14,19 @@ public abstract class Reunion {
     private Asistencia asistencia;
     private Retraso retraso;
     private Invitacion invitacion;
+    private TipoReunion tipoReunion; 
+    private ArrayList<Nota> notas; 
 //    private Empleado organizador;
 
 
-    public Reunion(Date fecha, Duration duracionPrevista, Instant horaPrevista) {
+    public Reunion(Date fecha, Duration duracionPrevista, Instant horaPrevista, TipoReunion t) {
         this.fecha = fecha;
         this.duracionPrevista = duracionPrevista;
         this.horaPrevista = horaPrevista;
         this.invitacion = new Invitacion();
         this.asistencia = new Asistencia(invitacion.getListaInvitados(), horaPrevista);
         this.retraso = new Retraso(invitacion.getListaInvitados(), horaPrevista);
+	this.tipoReunion = t;
 //        this.listaInvitable = new ArrayList<Empleado>();
 //        this.listaInvitados = new ArrayList<Empleado>();
 //        this.organizador = new Empleado();
