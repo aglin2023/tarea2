@@ -8,7 +8,7 @@ public class Departamento implements Invitable{
 
     public Departamento(String nombreDepa) {
         this.Nombre = nombreDepa;
-        ListaEmpleados = new ArrayList<Empleado>();
+        ListaEmpleados = new ArrayList<>();
     }
     public void AgregarEmpleados(Empleado empleado){
         ListaEmpleados.add(empleado);
@@ -30,14 +30,21 @@ public class Departamento implements Invitable{
         return Nombre;
     }
     @Override
-   public void Invitar(ArrayList<Empleado> listaInvitable, ArrayList<Empleado> listaInvitados) {
+   public void Invitar(ArrayList<Empleado> listaInvitados) {
         listaInvitados.addAll(ListaEmpleados);
-        for (Empleado empleado: ListaEmpleados){
-            for(int i=0; i<listaInvitable.size(); i++){
-                if(empleado==listaInvitable.get(i)){
-                    listaInvitable.remove(i);
-                }
+        for (Empleado empleado : ListaEmpleados) {
+            empleado.Invitar(listaInvitados);
+        }
+    }
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("Lista de empleados:\n");
+        if(ListaEmpleados != null) {
+            for(Empleado empleado : ListaEmpleados) {
+                sb.append(empleado.toString()).append("\n");
             }
         }
+        sb.append("\n");
+        return sb.toString();
     }
 }
