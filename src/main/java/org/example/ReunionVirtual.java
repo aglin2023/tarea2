@@ -30,7 +30,7 @@ public class ReunionVirtual extends Reunion {
 
     /**
      * metodo que regresa en un String los datos obtenidos de la reunion
-     * @return
+     * @return String con el enlace, lista de participantes, la asistencias y las notas de la reunion
      */
     public String toString(){
         StringBuilder sb = new StringBuilder();

@@ -20,12 +20,18 @@ public class ReunionPresencial extends Reunion{
         super(fecha, duracionPrevista, horaPrevista,t);
         this.sala = sala;
     }
-    /**metodo que regresa un String que reprsenta la sala */
+
+    /**metodo que regresa un String que reprsenta la sala
+     * @return nombre de la sala
+     */
     public String getSala(){
         return sala;
     }
 
-    /**metodo que regresa en un String los datos obtenidos de la reunion */
+    /**
+     * metodo que regresa en un String los datos obtenidos de la reunion
+     * @return un String con la sala, lista de participantes, la asistencia y las notas
+     */
     public String toString(){
         StringBuilder sb = new StringBuilder();
         sb.append(super.toString());
