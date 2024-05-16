@@ -23,7 +23,7 @@ public class Main {
         Date fecha = new Date(2024, 5, 15);
         Duration duracionPrevista = Duration.ofMinutes(60);
         Instant horaPrevista = Instant.parse("2024-05-15T18:00:00Z");
-        ReunionPresencial reunionPresencial = new ReunionPresencial(fecha,duracionPrevista,horaPrevista, "A9" ,TipoReunion.MARKETING);
+        ReunionVirtual reunionPresencial = new ReunionVirtual(fecha,duracionPrevista,horaPrevista, "www.hola@gmail.com" ,TipoReunion.MARKETING);
 
 
         departamento1.Invitar(reunionPresencial);
@@ -41,7 +41,7 @@ public class Main {
             asistencia.setHoraDeLlegada(null);
         }
         reunionPresencial.iniciar();
-        reunionPresencial.setHoraFin(Instant.parse("2024-05-16T23:38:41.78865953Z"));
+        reunionPresencial.setHoraFin(Instant.parse("2024-05-16T15:35:35.393686900Z"));
         ArrayList asistencias = reunionPresencial.obtenerAsistencias();
         ArrayList retrasos = reunionPresencial.obtenerRetrasos();
         ArrayList ausencias = reunionPresencial.obtenerAusencias();

@@ -132,8 +132,10 @@ public abstract class Reunion {
      * metodo que regresa el tiempo que duró la reunion en minutos
      * @return duracion de la reunion en minutos
      */
-    public float calcularTiempoReal() {
+    public float calcularTiempoReal() throws Exception{
         Duration tiempoReal = Duration.between(horaInicio, horaFin);
+        if(0 > (float)tiempoReal.toMinutes())
+            throw new ReunionException("Duración Negativa");
         return (float) tiempoReal.toMinutes();
     }
 
@@ -210,7 +212,15 @@ public abstract class Reunion {
         sb.append("Fecha de la reunión: ").append(fecha.toString()).append("\nHora de la reunión: ").append(horaPrevista.toString()).append("\n");
         sb.append("Hora de inicio: ").append(horaInicio.toString()).append("\n");
         sb.append("Hora de fin: ").append(horaFin.toString()).append("\n");
-        sb.append("Duración de la reunión: ").append(calcularTiempoReal()).append("\n");
+
+        try {
+            sb.append("Duración de la reunión: ").append(calcularTiempoReal()).append("\n");
+        }
+        catch (Exception e) {
+            return "Error duracion negativa\n";
+        }
+
+
         sb.append("Tipo de Reunion: ").append(tipoReunion).append("\n");
         return sb.toString();
     }

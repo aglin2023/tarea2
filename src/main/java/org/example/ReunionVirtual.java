@@ -34,8 +34,12 @@ public class ReunionVirtual extends Reunion {
      */
     public String toString(){
         StringBuilder sb = new StringBuilder();
-        sb.append(super.toString());
-        sb.append("Sala: ").append(enlace).append("\n");
+        String s = super.toString();
+        if(s.equals("Error duracion negativa\n"))
+            return s;
+
+        sb.append(s);
+        sb.append("Enlace: ").append(enlace).append("\n");
         sb.append("Lista de participantes: ").append("\n");
         ArrayList<Empleado> listaParticipantes = super.getAsistencia().getListaInvitados();
         for(int i = 0; i < listaParticipantes.size(); i++){
