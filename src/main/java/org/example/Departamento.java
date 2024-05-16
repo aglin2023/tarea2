@@ -38,7 +38,6 @@ public class Departamento implements Invitable{
      * @param r la reunion a la que se quiere invitar */
     public void Invitar(Reunion r) {
         ArrayList<Empleado> listaInvitados = r.getInvitacion().getListaInvitados();
-        listaInvitados.addAll(ListaEmpleados);
         for (Empleado empleado : ListaEmpleados) {
             empleado.Invitar(r);
         }
