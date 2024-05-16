@@ -31,7 +31,6 @@ public class Departamento implements Invitable{
     }
     @Override
    public void Invitar(ArrayList<Empleado> listaInvitados) {
-        listaInvitados.addAll(ListaEmpleados);
         for (Empleado empleado : ListaEmpleados) {
             empleado.Invitar(listaInvitados);
         }

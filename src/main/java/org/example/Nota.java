@@ -18,7 +18,7 @@ public class Nota {
 
     // Cambia la nota
     public void CambiarNota(String n){
-	contenido = n;
-	ultimoCambio = Instant.now();
+	    contenido = n;
+	    ultimoCambio = Instant.now();
     }
 }

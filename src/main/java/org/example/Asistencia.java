@@ -6,11 +6,10 @@ import java.util.ArrayList;
 public class Asistencia {
     private ArrayList<Empleado> listaInvitados;
     private ArrayList<Instant> listaHoraDeLlegada;
-    private Instant horaDeLlegada;
     private Instant horaPrevista;
     private ArrayList<Empleado> listaDeAsistencias;
     private ArrayList<Empleado> listaDeAusencias;
-
+    private int indiceHora;
 
     public Asistencia(ArrayList<Empleado> listaInvitados, Instant horaPrevista){
         this.listaInvitados = listaInvitados;
@@ -18,11 +17,12 @@ public class Asistencia {
         this.listaDeAsistencias = new ArrayList<>();
         this.listaDeAusencias = new ArrayList<>();
         this.listaHoraDeLlegada = new ArrayList<>();
+        this.indiceHora = 0;
     }
 
     public ArrayList<Empleado> getObtenerAsistencia(){
         for(int numeroInvitado = 0; numeroInvitado < listaInvitados.size(); numeroInvitado++) {
-            if(listaHoraDeLlegada.get(numeroInvitado).isBefore(horaPrevista) || listaHoraDeLlegada.get(numeroInvitado).equals(horaPrevista)){
+            if(listaHoraDeLlegada.get(numeroInvitado) != null){
                 listaDeAsistencias.add(listaInvitados.get(numeroInvitado));
             }
         }
@@ -37,14 +37,8 @@ public class Asistencia {
         return listaDeAusencias;
     }
 
-    /**
-     * setHoraDeLLegada tiene la función de registrar la hora de llegada de un empleado
-     * @param horaDeLlegada Instante de tiempo cuando se presenta
-     * @param numeroInvitado Número de invitado del empleado
-     */
-    public void setHoraDeLlegada(Instant horaDeLlegada, int numeroInvitado) {
-        this.horaDeLlegada = horaDeLlegada;
-        listaHoraDeLlegada.set(numeroInvitado, horaDeLlegada);
+    public void setHoraDeLlegada(Instant horaDeLlegada) {
+        listaHoraDeLlegada.add(horaDeLlegada);
     }
     public void setHoraDeLlegadaTodos(){
         Instant HoraDeLlegada = Instant.now();
@@ -75,21 +69,19 @@ public class Asistencia {
 
     public String toString(){
         StringBuilder sb = new StringBuilder();
-        sb.append("Asistencia; \n");
+         sb.append("\n");
+         sb.append("Asistencia: \n");
         if(listaDeAsistencias != null) {
-            int horaDeLlegadaEmpleado = 0;
             for(Empleado empleado : listaDeAsistencias) {
-                sb.append(empleado.toString());
-                sb.append(", ");
-                sb.append(listaHoraDeLlegada.get(horaDeLlegadaEmpleado).toString());
-                horaDeLlegadaEmpleado++;
+                sb.append(empleado.toString()).append(listaHoraDeLlegada.get(indiceHora));
             }
         } else {
             sb.append("No hubo asistencias\n");
         }
         if(listaDeAusencias != null) {
+            sb.append("\nAusente: \n");
             for(Empleado empleado : listaDeAusencias){
-                sb.append("Ausente: \n").append(empleado.toString());
+                sb.append(empleado.toString());
             }
         } else {
             sb.append("Todos Asistieron\n");

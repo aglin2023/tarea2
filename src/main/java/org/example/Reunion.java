@@ -24,7 +24,7 @@ public abstract class Reunion {
         this.horaPrevista = horaPrevista;
         this.invitacion = new Invitacion();
         this.asistencia = new Asistencia(invitacion.getListaInvitados(), horaPrevista);
-        this.retraso = new Retraso(invitacion.getListaInvitados(), horaPrevista);
+        this.retraso = new Retraso(invitacion.getListaInvitados(), horaPrevista, asistencia.getListaHoraDeLlegada(), asistencia.getListaDeAsistencias());
 	    this.tipoReunion = t;
         this.notas = new ArrayList<>();
     }
@@ -34,11 +34,11 @@ public abstract class Reunion {
     }
 
     public ArrayList obtenerAusencias() {
-        return asistencia.getListaDeAusencias();
+        return asistencia.getObtenerAusencias();
     }
 
     public ArrayList obtenerRetrasos() {
-        return retraso.getListaDeRetrasos();
+        return retraso.getObtenerRetrasos();
     }
 
     public int obtenerTotalAsistencias() {
@@ -49,7 +49,7 @@ public abstract class Reunion {
         return (float) obtenerTotalAsistencias() * 100 / (float) invitacion.getListaInvitados().size();
     }
 
-    public float calcularTiempoReal(Instant horaInicio, Instant horaFin) {
+    public float calcularTiempoReal() {
         Duration tiempoReal = Duration.between(horaInicio, horaFin);
         return (float) tiempoReal.toMinutes();
     }
@@ -65,6 +65,9 @@ public abstract class Reunion {
     public Asistencia getAsistencia() {
         return asistencia;
     }
+    public Retraso getRetraso(){
+        return retraso;
+    }
 
     public void agregarNotas(String apunte){
         Nota nota = new Nota(apunte);
@@ -74,12 +77,20 @@ public abstract class Reunion {
         return notas;
     }
 
+    public void cambiarNotas(int numeroDeNota, String s){
+        notas.get(numeroDeNota-1).CambiarNota(s);
+    }
+
+    public void setHoraFin(Instant horaFin){
+        this.horaFin = horaFin;
+    }
+
     public String toString(){
         StringBuilder sb = new StringBuilder();
         sb.append("Fecha de la reunión: ").append(fecha.toString()).append(" Hora de la reunión:").append(horaPrevista.toString()).append("\n");
         sb.append("Hora de inicio: ").append(horaInicio.toString()).append("\n");
         sb.append("Hora de fin: ").append(horaFin.toString()).append("\n");
-        sb.append("Duración de la reunión: ").append(calcularTiempoReal(horaInicio, horaFin)).append("\n");
+        sb.append("Duración de la reunión: ").append(calcularTiempoReal()).append("\n");
         return sb.toString();
     }
 

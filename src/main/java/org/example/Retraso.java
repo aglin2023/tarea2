@@ -1,15 +1,22 @@
 package org.example;
 
+import javax.swing.*;
 import java.time.Instant;
 import java.util.ArrayList;
 
 public class Retraso extends Asistencia {
 
     private ArrayList<Empleado> listaDeRetrasos;
+    private ArrayList<Instant> listaHoraDeLlegada;
+    private Instant horaPrevista;
+    private ArrayList<Empleado> listaDeAsistencia;
 
-    public Retraso(ArrayList<Empleado> listaInvitados, Instant horaPrevista){
+    public Retraso(ArrayList<Empleado> listaInvitados, Instant horaPrevista, ArrayList<Instant> listaHoraDeLlegada, ArrayList<Empleado> listaDeAsistencia){
         super(listaInvitados, horaPrevista);
         this.listaDeRetrasos = new ArrayList<>();
+        this.horaPrevista = horaPrevista;
+        this.listaHoraDeLlegada = listaHoraDeLlegada;
+        this.listaDeAsistencia = listaDeAsistencia;
     }
 
     /**
@@ -17,10 +24,11 @@ public class Retraso extends Asistencia {
      * @return Lista de empleados que se retrasaron en la reunión
      */
     public ArrayList<Empleado> getObtenerRetrasos() {
-        for (int i = 0; i < super.getListaInvitados().size(); i++) {
-            if (super.getListaHoraDeLlegada().get(i).isAfter(super.getHoraPrevista())) {
-                super.getListaDeAsistencias().add(super.getListaInvitados().get(i));
-                listaDeRetrasos.add(super.getListaInvitados().get(i));
+        if (listaHoraDeLlegada != null && !listaHoraDeLlegada.isEmpty()) {
+            for (int i = 0; i < getListaInvitados().size(); i++) {
+                if (listaHoraDeLlegada.get(i) != null && listaHoraDeLlegada.get(i).isAfter(horaPrevista)  ) {
+                    listaDeRetrasos.add(getListaInvitados().get(i));
+                }
             }
         }
         return listaDeRetrasos;
@@ -36,8 +44,8 @@ public class Retraso extends Asistencia {
         if (listaDeRetrasos != null) {
             int horaDeLlegadaEmpleado = 0;
             for(Empleado empleado : listaDeRetrasos) {
-                sb.append(empleado.toString()).append(", ");
-                sb.append(super.getListaHoraDeLlegada().get(horaDeLlegadaEmpleado));
+                sb.append(empleado.toString()).append("\n");
+                sb.append(listaHoraDeLlegada.get(horaDeLlegadaEmpleado));
                 sb.append("\n");
                 horaDeLlegadaEmpleado++;
             }
