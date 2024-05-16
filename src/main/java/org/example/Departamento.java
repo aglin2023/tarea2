@@ -17,6 +17,8 @@ public class Departamento implements Invitable{
     /**metodo publico de tipo void que permite agregar empleados a la lista de empleados
      * @param empleado representa que se quiere añadir empleados a la lista*/
     public void AgregarEmpleados(Empleado empleado){
+        if(ListaEmpleados.contains(empleado))
+            return;
         ListaEmpleados.add(empleado);
     }
 

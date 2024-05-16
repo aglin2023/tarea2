@@ -1,5 +1,9 @@
 package org.example;
 
+import org.example.Exception.ReunionException;
+
+import java.io.File;
+import java.io.FileWriter;
 import java.time.Instant;
 import java.time.Duration;
 import java.util.Date;
@@ -110,12 +114,20 @@ public abstract class Reunion {
         return asistencia.getListaDeAsistencias().size();
     }
 
+<<<<<<< HEAD
     /**
      * metodo que regresa el porcentaje de asistencia de la reunion
      * @return porcentaje de asistencia
      */
     public float obtenerPorcentajeAsistencia() {
         return (float) obtenerTotalAsistencias() * 100 / (float) invitacion.getListaInvitados().size();
+=======
+    public float obtenerPorcentajeAsistencia() throws Exception {
+        if(invitacion.getListaInvitados().size() != 0)
+            return (float) obtenerTotalAsistencias() * 100 / (float) invitacion.getListaInvitados().size();
+        else
+            throw new ReunionException("División por cero invitados");
+>>>>>>> Test
     }
 
     /**
@@ -204,10 +216,25 @@ public abstract class Reunion {
         return sb.toString();
     }
 
+<<<<<<< HEAD
     /**
      * metodo que permite obtener una invitacion a la reunio
      * @return una invitacion a la reunion
      */
+=======
+    public void toString(String path) {
+        try{
+            FileWriter fw = new FileWriter(path);
+            for (int i = 0; i < this.toString().length(); i++)
+                fw.write(this.toString().charAt(i));
+            fw.close();
+        }
+        catch (Exception e){
+            System.out.println(e.toString());
+        }
+    }
+
+>>>>>>> Test
     public Invitacion getInvitacion() {
         return invitacion;
     }
