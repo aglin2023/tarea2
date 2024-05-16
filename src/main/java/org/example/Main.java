@@ -41,7 +41,7 @@ public class Main {
             asistencia.setHoraDeLlegada(null);
         }
         reunionPresencial.iniciar();
-        reunionPresencial.setHoraFin(Instant.parse("2024-05-15T23:38:41.78865953Z"));
+        reunionPresencial.setHoraFin(Instant.parse("2024-05-16T23:38:41.78865953Z"));
         ArrayList asistencias = reunionPresencial.obtenerAsistencias();
         ArrayList retrasos = reunionPresencial.obtenerRetrasos();
         ArrayList ausencias = reunionPresencial.obtenerAusencias();

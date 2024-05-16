@@ -207,7 +207,7 @@ public abstract class Reunion {
      */
     public String toString(){
         StringBuilder sb = new StringBuilder();
-        sb.append("Fecha de la reunión: ").append(fecha.toString()).append(" Hora de la reunión:").append(horaPrevista.toString()).append("\n");
+        sb.append("Fecha de la reunión: ").append(fecha.toString()).append("\nHora de la reunión: ").append(horaPrevista.toString()).append("\n");
         sb.append("Hora de inicio: ").append(horaInicio.toString()).append("\n");
         sb.append("Hora de fin: ").append(horaFin.toString()).append("\n");
         sb.append("Duración de la reunión: ").append(calcularTiempoReal()).append("\n");
