@@ -211,6 +211,7 @@ public abstract class Reunion {
         sb.append("Hora de inicio: ").append(horaInicio.toString()).append("\n");
         sb.append("Hora de fin: ").append(horaFin.toString()).append("\n");
         sb.append("Duración de la reunión: ").append(calcularTiempoReal()).append("\n");
+        sb.append("Tipo de Reunion: ").append(tipoReunion).append("\n");
         return sb.toString();
     }
 
