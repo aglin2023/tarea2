@@ -1,5 +1,6 @@
 package org.example;
 
+import java.io.File;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -45,13 +46,7 @@ public class Main {
         ArrayList retrasos = reunionPresencial.obtenerRetrasos();
         ArrayList ausencias = reunionPresencial.obtenerAusencias();
         System.out.println(reunionPresencial.toString());
-//        System.out.println(retraso.toString());
-        System.out.println(asistencia.toString());
-        try {
-            System.out.println("Porcentaje de Asistencia: "+reunionPresencial.obtenerPorcentajeAsistencia());
-        }
-        catch (Exception e){
-            System.out.println(e.toString());
-        }
+
+        reunionPresencial.toString("src/main/java/org/example/Informe.txt");
     }
 }

@@ -2,6 +2,8 @@ package org.example;
 
 import org.example.Exception.ReunionException;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.time.Instant;
 import java.time.Duration;
 import java.util.Date;
@@ -103,6 +105,18 @@ public abstract class Reunion {
         sb.append("Hora de fin: ").append(horaFin.toString()).append("\n");
         sb.append("Duración de la reunión: ").append(calcularTiempoReal()).append("\n");
         return sb.toString();
+    }
+
+    public void toString(String path) {
+        try{
+            FileWriter fw = new FileWriter(path);
+            for (int i = 0; i < this.toString().length(); i++)
+                fw.write(this.toString().charAt(i));
+            fw.close();
+        }
+        catch (Exception e){
+            System.out.println(e.toString());
+        }
     }
 
     public Invitacion getInvitacion() {
