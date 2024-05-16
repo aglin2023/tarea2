@@ -47,5 +47,11 @@ public class Main {
         System.out.println(reunionPresencial.toString());
 //        System.out.println(retraso.toString());
         System.out.println(asistencia.toString());
+        try {
+            System.out.println("Porcentaje de Asistencia: "+reunionPresencial.obtenerPorcentajeAsistencia());
+        }
+        catch (Exception e){
+            System.out.println(e.toString());
+        }
     }
 }

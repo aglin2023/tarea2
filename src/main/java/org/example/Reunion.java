@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.Exception.ReunionException;
+
 import java.time.Instant;
 import java.time.Duration;
 import java.util.Date;
@@ -51,8 +53,11 @@ public abstract class Reunion {
         return asistencia.getListaDeAsistencias().size();
     }
 
-    public float obtenerPorcentajeAsistencia() {
-        return (float) obtenerTotalAsistencias() * 100 / (float) invitacion.getListaInvitados().size();
+    public float obtenerPorcentajeAsistencia() throws Exception {
+        if(invitacion.getListaInvitados().size() != 0)
+            return (float) obtenerTotalAsistencias() * 100 / (float) invitacion.getListaInvitados().size();
+        else
+            throw new ReunionException("División por cero invitados");
     }
 
     public float calcularTiempoReal() {
