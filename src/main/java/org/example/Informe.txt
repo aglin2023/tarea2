@@ -1,12 +1,12 @@
 Fecha de la reunión: Sun Jun 15 00:00:00 CLT 3924 Hora de la reunión:2024-05-15T18:00:00Z
-Hora de inicio: 2024-05-16T07:32:43.239259800Z
+Hora de inicio: 2024-05-16T17:09:09.699437804Z
 Hora de fin: 2024-05-15T23:38:41.788659530Z
-Duración de la reunión: -474.0
+Duración de la reunión: -1050.0
 Sala: A9
 Lista de participantes: 
 Empleado{ID='id1, Apellido='apellido1, Nombre='nombre1, Correo='correo1}
 2024-05-15T20:00:00Z Llegó con retraso
-Nota 1469:
-PROBANDO NOTA 123 -- 2024-05-16T07:32:43.239259800Z
-Nota 1712:
-ESTA NOTA 2 CAMBIADA -- 2024-05-16T07:32:43.239259800Z
+Nota 1463:
+PROBANDO NOTA 123 -- 2024-05-16T17:09:09.699347734Z
+Nota 1726:
+ESTA NOTA 2 CAMBIADA -- 2024-05-16T17:09:09.699360454Z

@@ -114,20 +114,18 @@ public abstract class Reunion {
         return asistencia.getListaDeAsistencias().size();
     }
 
-<<<<<<< HEAD
+
+
     /**
      * metodo que regresa el porcentaje de asistencia de la reunion
      * @return porcentaje de asistencia
      */
-    public float obtenerPorcentajeAsistencia() {
-        return (float) obtenerTotalAsistencias() * 100 / (float) invitacion.getListaInvitados().size();
-=======
     public float obtenerPorcentajeAsistencia() throws Exception {
         if(invitacion.getListaInvitados().size() != 0)
             return (float) obtenerTotalAsistencias() * 100 / (float) invitacion.getListaInvitados().size();
         else
             throw new ReunionException("División por cero invitados");
->>>>>>> Test
+
     }
 
     /**
@@ -204,7 +202,7 @@ public abstract class Reunion {
     }
 
     /**
-     * metodo que regresa una cadena de texto con los datos relacionados a la reunion
+     * metodo que regresa una cadena de texto con los datos relacionados a la reunion, datos que se imprimen en terminal
      * @return String con la fecha de reunion, hora de inicio y de fin y la duracion de la reunion
      */
     public String toString(){
@@ -216,12 +214,10 @@ public abstract class Reunion {
         return sb.toString();
     }
 
-<<<<<<< HEAD
     /**
-     * metodo que permite obtener una invitacion a la reunio
+     * metodo que regresa los datos de la reunion en un txt
      * @return una invitacion a la reunion
      */
-=======
     public void toString(String path) {
         try{
             FileWriter fw = new FileWriter(path);
@@ -234,7 +230,6 @@ public abstract class Reunion {
         }
     }
 
->>>>>>> Test
     public Invitacion getInvitacion() {
         return invitacion;
     }
