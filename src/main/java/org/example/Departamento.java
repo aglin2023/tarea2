@@ -19,17 +19,27 @@ public class Departamento implements Invitable{
     public void AgregarEmpleados(Empleado empleado){
         ListaEmpleados.add(empleado);
     }
-    /**metodo que regresa un entero del tamaño de la lista de empleados */
+
+    /**
+     * metodo que regresa un entero del tamaño de la lista de empleados
+     * @return retorna el tamaño del array ListaEmpleados
+     */
     public int TamañoListaEmpleados(){
         return ListaEmpleados.size();
     }
 
-    /**metodo que regresa una lista con los empleados*/
+    /**
+     * metodo que regresa una lista con los empleados
+     * @return Retorna Lista de Empleados
+     */
     public ArrayList<Empleado> getListaEmpleados(){
         return  ListaEmpleados;
     }
 
-    /**metodo que regresa el nombre del departamento */
+    /**
+     * metodo que regresa el nombre del departamento
+     * @return retorna el nombre del departamento.
+     */
     public String NombreDelDepaEs(){
         return Nombre;
     }

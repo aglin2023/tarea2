@@ -14,10 +14,16 @@ public abstract class Reunion {
     private Asistencia asistencia;
     private Retraso retraso;
     protected Invitacion invitacion;
-    private TipoReunion tipoReunion; 
+    private TipoReunion tipoReunion;
     private ArrayList<Nota> notas;
 
-
+    /**
+     *
+     * @param fecha
+     * @param duracionPrevista
+     * @param horaPrevista
+     * @param t
+     */
     public Reunion(Date fecha, Duration duracionPrevista, Instant horaPrevista, TipoReunion t) {
         this.fecha = fecha;
         this.duracionPrevista = duracionPrevista;
@@ -30,15 +36,15 @@ public abstract class Reunion {
     }
 
     public ArrayList obtenerAsistencias() {
-        return asistencia.getObtenerAsistencia();
+        return asistencia.obtenerAsistencia();
     }
 
     public ArrayList obtenerAusencias() {
-        return asistencia.getObtenerAusencias();
+        return asistencia.obtenerAusencia();
     }
 
     public ArrayList obtenerRetrasos() {
-        return retraso.getObtenerRetrasos();
+        return retraso.ObtenerRetrasos();
     }
 
     public int obtenerTotalAsistencias() {
@@ -94,4 +100,7 @@ public abstract class Reunion {
         return sb.toString();
     }
 
+    public Invitacion getInvitacion() {
+        return invitacion;
+    }
 }

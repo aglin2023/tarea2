@@ -28,7 +28,10 @@ public class ReunionVirtual extends Reunion {
         return enlace;
     }
 
-    /**metodo que regresa en un String los datos obtenidos de la reunion */
+    /**
+     * metodo que regresa en un String los datos obtenidos de la reunion
+     * @return
+     */
     public String toString(){
         StringBuilder sb = new StringBuilder();
         sb.append(super.toString());

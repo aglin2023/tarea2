@@ -1,6 +1,5 @@
 package org.example;
 
-import javax.swing.*;
 import java.time.Instant;
 import java.util.ArrayList;
 
@@ -11,6 +10,13 @@ public class Retraso extends Asistencia {
     private Instant horaPrevista;
     private ArrayList<Empleado> listaDeAsistencia;
 
+    /**
+     *
+     * @param listaInvitados
+     * @param horaPrevista
+     * @param listaHoraDeLlegada
+     * @param listaDeAsistencia
+     */
     public Retraso(ArrayList<Empleado> listaInvitados, Instant horaPrevista, ArrayList<Instant> listaHoraDeLlegada, ArrayList<Empleado> listaDeAsistencia){
         super(listaInvitados, horaPrevista);
         this.listaDeRetrasos = new ArrayList<>();
@@ -23,7 +29,7 @@ public class Retraso extends Asistencia {
      *  Método para ver que empleado ha llegado tarde
      * @return Lista de empleados que se retrasaron en la reunión
      */
-    public ArrayList<Empleado> getObtenerRetrasos() {
+    public ArrayList<Empleado> ObtenerRetrasos() {
         if (listaHoraDeLlegada != null && !listaHoraDeLlegada.isEmpty()) {
             for (int i = 0; i < getListaInvitados().size(); i++) {
                 if (listaHoraDeLlegada.get(i) != null && listaHoraDeLlegada.get(i).isAfter(horaPrevista)  ) {

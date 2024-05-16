@@ -20,7 +20,7 @@ public class Asistencia {
         this.indiceHora = 0;
     }
 
-    public ArrayList<Empleado> getObtenerAsistencia(){
+    public ArrayList<Empleado> obtenerAsistencia(){
         for(int numeroInvitado = 0; numeroInvitado < listaInvitados.size(); numeroInvitado++) {
             if(listaHoraDeLlegada.get(numeroInvitado) != null){
                 listaDeAsistencias.add(listaInvitados.get(numeroInvitado));
@@ -28,7 +28,7 @@ public class Asistencia {
         }
         return listaDeAsistencias;
     }
-    public ArrayList<Empleado> getObtenerAusencias(){
+    public ArrayList<Empleado> obtenerAusencia(){
         for(int numeroInvitado = 0; numeroInvitado < listaInvitados.size(); numeroInvitado++){
             if(listaHoraDeLlegada.get(numeroInvitado) == null) {
                 listaDeAusencias.add(listaInvitados.get(numeroInvitado));
@@ -79,7 +79,7 @@ public class Asistencia {
             sb.append("No hubo asistencias\n");
         }
         if(listaDeAusencias != null) {
-            sb.append("\nAusente: \n");
+            sb.append("\nAusente:    \n");
             for(Empleado empleado : listaDeAusencias){
                 sb.append(empleado.toString());
             }
