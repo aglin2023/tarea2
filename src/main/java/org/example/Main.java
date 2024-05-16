@@ -25,10 +25,10 @@ public class Main {
         ReunionPresencial reunionPresencial = new ReunionPresencial(fecha,duracionPrevista,horaPrevista, "A9" ,TipoReunion.MARKETING);
 
 
-        departamento1.Invitar(reunionPresencial.invitacion.getListaInvitados());
-        departamento2.Invitar(reunionPresencial.invitacion.getListaInvitados());
-        empleado1.Invitar(reunionPresencial.invitacion.getListaInvitados());
-        departamento1.Invitar(reunionPresencial.invitacion.getListaInvitados());
+        departamento1.Invitar(reunionPresencial);
+        departamento2.Invitar(reunionPresencial);
+        empleado1.Invitar(reunionPresencial);
+        departamento1.Invitar(reunionPresencial);
         reunionPresencial.agregarNotas("PROBANDO NOTA 123");
         reunionPresencial.agregarNotas("ESTA ES UNA NOTA 2");
         reunionPresencial.cambiarNotas(2, "ESTA NOTA 2 CAMBIADA");
